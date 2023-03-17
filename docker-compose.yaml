@@ -1,0 +1,20 @@
+---
+version: "2.1"
+services:
+  mariadb:
+    image: lscr.io/linuxserver/mariadb:latest
+    container_name: yet-another-mariadb
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Etc/UTC
+      - MYSQL_ROOT_PASSWORD=ROOT_ACCESS_PASSWORD
+      - MYSQL_DATABASE=DATABASE #optional
+      - MYSQL_USER=user #optional
+      - MYSQL_PASSWORD=thisisasupersecretpassword #optional
+     # - REMOTE_SQL=http://url1/your.sql,https://URL2/your.sql #optional
+    volumes:
+      - /Users/mrtuxa/IdeaProjects/goberly_bot/docker:/config
+    ports:
+      - "3306:3306"
+    restart: unless-stopped
